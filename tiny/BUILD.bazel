@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "tiny_proto",
+    srcs = ["broken.proto"],
+    visibility = ["//visibility:public"],
+)
+
+go_proto_library(
+    name = "tiny_go_proto",
+    importpath = "github.com/njt99/rules_go_missing_pb_go/tiny",
+    proto = ":tiny_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "go_default_library",
+    importpath = "github.com/njt99/rules_go_missing_pb_go/tiny",
+    library = ":tiny_go_proto",
+    visibility = ["//visibility:public"],
+)
