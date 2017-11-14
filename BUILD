@@ -12,10 +12,3 @@ go_library(
     visibility = ["//visibility:private"],
     deps = ["@com_github_chrislusf_gleam//pb:go_default_library"],
 )
-
-go_binary(
-    name = "challenges",
-    importpath = "github.com/ipvive/challenges",
-    library = ":go_default_library",
-    visibility = ["//visibility:public"],
-)
